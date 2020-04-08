@@ -1,17 +1,19 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import React from "react"
+import { Link } from "gatsby"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
+const HomeItemLayout = ({title, items}) => {
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      {posts.map(({ node }) => {
+    <article style={{ padding: `0px 15px 15px 15px` }}>
+      <h1
+        style={{
+          marginTop: rhythm(1),
+          marginBottom: 0,
+        }}
+      >
+        {title}
+      </h1>
+      {items.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article
@@ -62,40 +64,6 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
-    </Layout>
+    </article>
   )
 }
-
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            template
-            title
-            tags
-            description
-            slug
-            category
-          }
-        }
-      }
-    }
-  }
-`

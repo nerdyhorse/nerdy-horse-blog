@@ -25,7 +25,7 @@ class Header extends React.Component {
     return (
       <div className="header-main">
         <Link className="logo-link" to={`/`}>
-          <img src={logo} alt="22 Boxes logo" className="logo-img" />
+          <img src={logo} alt="nerdyhorse logo" className="logo-img" />
         </Link>
 
         <div className="header-nav">
@@ -37,13 +37,15 @@ class Header extends React.Component {
                 </Link>
               </h1>
             </li>
-            <li className="nav-li">
-              <h1 className="li-h1" style={workLinkStyle}>
-                <Link className="li-link" to={`/work`}>
-                  Work
-                </Link>
-              </h1>
-            </li>
+            {/*commenting this out as it is not needed as of now.*/}
+            {/*will uncomment when I add some other things*/}
+            {/*<li className="nav-li">*/}
+            {/*  <h1 className="li-h1" style={workLinkStyle}>*/}
+            {/*    <Link className="li-link" to={`/work`}>*/}
+            {/*      Work*/}
+            {/*    </Link>*/}
+            {/*  </h1>*/}
+            {/*</li>*/}
             <li
               style={{
                 float: "left",

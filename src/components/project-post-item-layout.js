@@ -1,16 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import { Link } from "gatsby"
+import React from "react"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
+const ProjectPostItem = ({posts}) => {
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+    <div>
+      <h3 style={{marginBottom: rhythm(1 / 10),}}>
+        {`Recent Posts for this Project`}
+      </h3>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -22,7 +19,7 @@ const BlogIndex = ({ data, location }) => {
             }}
           >
             <header>
-              <h3
+              <h5
                 style={{
                   marginBottom: rhythm(1 / 10),
                 }}
@@ -31,7 +28,7 @@ const BlogIndex = ({ data, location }) => {
                   style={{
                     boxShadow: `none`,
                     color: "#000000",
-                    fontSize: `21px`,
+                    fontSize: `18px`,
                     fontWeight: `400`,
                     fontFamily: `Montserrat`,
                   }}
@@ -39,7 +36,7 @@ const BlogIndex = ({ data, location }) => {
                 >
                   {title}
                 </Link>
-              </h3>
+              </h5>
               <small
                 style={{
                   color: "#B7B7B7",
@@ -51,7 +48,7 @@ const BlogIndex = ({ data, location }) => {
               </small>
             </header>
             <section
-              style={{ color: "#888888", fontSize: `17px`, fontWeight: `300` }}
+              style={{ color: "#888888", fontSize: `14px`, fontWeight: `300` }}
             >
               <p
                 dangerouslySetInnerHTML={{
@@ -62,40 +59,8 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
-    </Layout>
+    </div>
   )
 }
 
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            template
-            title
-            tags
-            description
-            slug
-            category
-          }
-        }
-      }
-    }
-  }
-`
+export default ProjectPostItem

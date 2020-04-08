@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `22Boxes Template Uno`,
+    title: `NerdyHorse Blog`,
     author: {
-      name: `Gagandeep Singh`,
-      summary: `22boxes.com`,
+      name: `Nerdy Horse`,
+      summary: `nerdyhorse.me/about`,
     },
-    description: `22Boxes Gatsby template Uno`,
+    description: `NerdyHorse's personal blog`,
     siteUrl: `https://22boxesgatsbyuno.netlify.com/`,
     social: {
-      twitter: `twentytwoboxes`,
+      twitter: `@_nerdyhorse`,
     },
   },
   plugins: [
@@ -17,6 +17,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/projects`,
+        name: `projects`,
       },
     },
     {
