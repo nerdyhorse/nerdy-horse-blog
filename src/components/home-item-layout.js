@@ -67,3 +67,5 @@ const HomeItemLayout = ({title, items}) => {
     </article>
   )
 }
+
+export default HomeItemLayout
