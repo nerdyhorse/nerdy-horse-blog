@@ -4,23 +4,35 @@ import { Link } from "gatsby"
 import "./style.css"
 
 class Header extends React.Component {
+  getLinkStyle(location, pathname) {
+    return {
+      paddingBottom: location.pathname === pathname ? `5px` : `0px`,
+      boxShadow:
+        location.pathname === pathname ? `0px 1px 0px 0px black` : `none`,
+    }
+  }
+
+  getNavListItem(isLast, style, text, link) {
+    const className = isLast ? "nav-li-last" : "nav-li"
+
+    return (
+      <li className={className}>
+        <hi className="li-h1" style={style}>
+          <Link className="li-link" to={link}>
+            {text}
+          </Link>
+        </hi>
+      </li>
+    )
+  }
+
   render() {
     const { location } = this.props
 
-    const blogLinkStyle = {
-      paddingBottom: location.pathname === "/" ? `5px` : `0px`,
-      boxShadow: location.pathname === "/" ? `0px 1px 0px 0px black` : `none`,
-    }
-    const workLinkStyle = {
-      paddingBottom: location.pathname === "/work" ? `5px` : `0px`,
-      boxShadow:
-        location.pathname === "/work" ? `0px 1px 0px 0px black` : `none`,
-    }
-    const aboutLinkStyle = {
-      paddingBottom: location.pathname === "/about" ? `5px` : `0px`,
-      boxShadow:
-        location.pathname === "/about" ? `0px 1px 0px 0px black` : `none`,
-    }
+    const homeLinkStyle = this.getLinkStyle(location, "/")
+    const projectsLinkStyle = this.getLinkStyle(location, "/projects")
+    const postsLinkStyle = this.getLinkStyle(location, "/posts")
+    const aboutLinkStyle = this.getLinkStyle(location, "/about")
 
     return (
       <div className="header-main">
@@ -30,33 +42,15 @@ class Header extends React.Component {
 
         <div className="header-nav">
           <ul className="nav-ul">
-            <li className="nav-li">
-              <h1 className="li-h1" style={blogLinkStyle}>
-                <Link className="li-link" to={`/`}>
-                  Blog
-                </Link>
-              </h1>
-            </li>
-            {/*commenting this out as it is not needed as of now.*/}
-            {/*will uncomment when I add some other things*/}
-            {/*<li className="nav-li">*/}
-            {/*  <h1 className="li-h1" style={workLinkStyle}>*/}
-            {/*    <Link className="li-link" to={`/work`}>*/}
-            {/*      Work*/}
-            {/*    </Link>*/}
-            {/*  </h1>*/}
-            {/*</li>*/}
-            <li
-              style={{
-                float: "left",
-              }}
-            >
-              <h1 className="li-h1" style={aboutLinkStyle}>
-                <Link className="li-link" to={`/about`}>
-                  About
-                </Link>
-              </h1>
-            </li>
+            {this.getNavListItem(false, homeLinkStyle, "Home", "/")}
+            {this.getNavListItem(
+              false,
+              projectsLinkStyle,
+              "Projects",
+              "/projects"
+            )}
+            {this.getNavListItem(false, postsLinkStyle, "Posts", "/posts")}
+            {this.getNavListItem(true, aboutLinkStyle, "About", "/about")}
           </ul>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
@@ -8,7 +8,6 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -26,9 +25,19 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
+            <h4
+              style={{
+                fontFamily: `Montserrat`,
+                marginTop: rhythm(1 / 2),
+                marginBottom: 0,
+              }}
+            >
+              {`Project: ${post.frontmatter.project}`}
+            </h4>
             <p
               style={{
                 ...scale(-1 / 5),
+                marginTop: rhythm(1 / 10),
                 display: `block`,
                 marginBottom: rhythm(1),
               }}
@@ -36,44 +45,14 @@ class BlogPostTemplate extends React.Component {
               {post.frontmatter.date}
             </p>
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <section dangerouslySetInnerHTML={{ __html: post.html }}/>
           <hr
             style={{
               marginBottom: rhythm(2),
               marginTop: rhythm(2),
             }}
           />
-          {/*<footer>*/}
-          {/*  <Bio />*/}
-          {/*</footer>*/}
         </article>
-
-        {/*<nav>*/}
-        {/*  <ul*/}
-        {/*    style={{*/}
-        {/*      display: `flex`,*/}
-        {/*      flexWrap: `wrap`,*/}
-        {/*      justifyContent: `space-between`,*/}
-        {/*      listStyle: `none`,*/}
-        {/*      padding: 0,*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <li>*/}
-        {/*      {previous && (*/}
-        {/*        <Link to={previous.fields.slug} rel="prev">*/}
-        {/*          ← {previous.frontmatter.title}*/}
-        {/*        </Link>*/}
-        {/*      )}*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      {next && (*/}
-        {/*        <Link to={next.fields.slug} rel="next">*/}
-        {/*          {next.frontmatter.title} →*/}
-        {/*        </Link>*/}
-        {/*      )}*/}
-        {/*    </li>*/}
-        {/*  </ul>*/}
-        {/*</nav>*/}
       </Layout>
     )
   }
@@ -96,6 +75,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        project
       }
     }
   }

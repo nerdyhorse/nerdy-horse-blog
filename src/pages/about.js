@@ -10,12 +10,18 @@ const AboutPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
-      <div style={{ marginTop: `30px`, fontFamily: `Montserrat` }}>
-        <h2>This is Uno.</h2>
-        First Gatsby template by{" "}
-        <a href="https://22boxes.com" target="blank">
-          22Boxes.com
-        </a>
+      <div
+        style={{
+          marginTop: `30px`,
+          fontFamily: `Montserrat`,
+          color: "#212121",
+          fontWeight: "400",
+        }}
+      >
+        <h1>This is Nerdy Horse</h1>
+        This is Nerdy Horse's anonymous blog. Over here I will add some of the
+        things which I feel will be helpful to others as I learn them. More
+        about me will follow once I figure it out myself.
       </div>
     </Layout>
   )

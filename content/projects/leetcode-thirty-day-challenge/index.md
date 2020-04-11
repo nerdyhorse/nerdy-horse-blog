@@ -3,6 +3,7 @@ template: project
 title: Leetcode thirty day challenge
 slug: leetcode-thirty-day-challenge
 date: "2020-03-30T23:46:37.121Z"
+description: Overview of the project for Leetcode thirty day challenge
 category: leetcode-thirty-day-challenge
 tags: ["Programming", "Kotlin"]
 ---

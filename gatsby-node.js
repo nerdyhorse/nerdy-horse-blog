@@ -30,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `,
+    `
   )
 
   if (result.errors) {
@@ -39,41 +39,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges.filter(
-    edge => edge.node.frontmatter.template === "post",
+    edge => edge.node.frontmatter.template === "post"
   )
   handlePosts(createPage, posts)
 
   // Create project pages.
   const projects = result.data.allMarkdownRemark.edges.filter(
-    edge => edge.node.frontmatter.template === "project",
+    edge => edge.node.frontmatter.template === "project"
   )
   handleProjects(createPage, projects, posts)
-
-  // const work = result.data.allMarkdownRemark.edges.filter(
-  //   edge => edge.node.frontmatter.template === "work"
-  // )
-
-  // const workPage = path.resolve("./src/templates/work.js")
-  // work.forEach(work => {
-  //   createPage({
-  //     path: work.node.fields.slug,
-  //     component: workPage,
-  //     context: {
-  //       slug: work.node.fields.slug,
-  //     },
-  //   })
-  // })
 }
 
 function handleProjects(createPage, projects, posts) {
   const projectTemplate = path.resolve(`./src/templates/project.js`)
 
-  projects.forEach((project) => {
-    const projectPosts = posts.filter(
-      post => {
-        return post.node.frontmatter.project === project.node.frontmatter.category
-      },
-    )
+  projects.forEach(project => {
+    const projectPosts = posts.filter(post => {
+      return post.node.frontmatter.project === project.node.frontmatter.category
+    })
 
     createPage({
       path: project.node.fields.slug,
@@ -89,17 +72,12 @@ function handleProjects(createPage, projects, posts) {
 function handlePosts(createPage, posts) {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  posts.forEach(post => {
     createPage({
       path: post.node.fields.slug,
       component: blogPost,
       context: {
         slug: post.node.fields.slug,
-        previous,
-        next,
       },
     })
   })
