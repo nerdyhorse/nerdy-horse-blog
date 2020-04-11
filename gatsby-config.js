@@ -6,7 +6,7 @@ module.exports = {
       summary: `nerdyhorse.me/about`,
     },
     description: `NerdyHorse's personal blog`,
-    siteUrl: `https://22boxesgatsbyuno.netlify.com/`,
+    siteUrl: `https://www.nerdyhorse.me`,
     social: {
       twitter: `@_nerdyhorse`,
     },
@@ -68,7 +68,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `NerdyHorse's Blog`,
-        short_name: `22Boxes.com`,
+        short_name: `nerdyhorse.me`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

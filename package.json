@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Nerdy Horse <nerdyhorse.me@gmail.com>",
   "bugs": {
-    "url": "https://github.com/iamtherealgd/gatsby-starter-22boxes-uno"
+    "url": "https://github.com/nerdyhorse/nerdy-horse-blog"
   },
   "dependencies": {
     "gatsby": "2.20.12",
