@@ -38,7 +38,7 @@
   "devDependencies": {
     "prettier": "1.19.1"
   },
-  "homepage": "https://github.com/iamtherealgd/gatsby-starter-22boxes-uno",
+  "homepage": "https://github.com/nerdyhorse/nerdy-horse-blog",
   "keywords": [
     "gatsby"
   ],
@@ -46,7 +46,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamtherealgd/gatsby-starter-22boxes-uno.git"
+    "url": "git+https://github.com/nerdyhorse/nerdy-horse-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
