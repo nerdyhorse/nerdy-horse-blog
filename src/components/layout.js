@@ -2,8 +2,8 @@ import React from "react"
 import { rhythm } from "../utils/typography"
 import Header from "./Header"
 
-function Layout({ location, title, children }) {
-  const rootPath = `${__PATH_PREFIX__}/`
+function Layout({ location, _title, children }) {
+  // const rootPath = `${__PATH_PREFIX__}/`
 
   return (
     <div
